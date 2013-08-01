@@ -29,6 +29,9 @@ class ImageManager(base.ManagerWithFind):
     """
     resource_class = Image
 
+    def create(self, image_name, os_name):
+	self.api.client.post("/images", body={'createImage':{'name': image_name, 'metadata':{}, 'imageSpec': {'osName':os_name}}})
+
     def get(self, image):
         """
         Get an image.
